@@ -8,7 +8,7 @@ const sql = fs.readFileSync(sqlPath).toString();
 
 dbConnection.query(sql, (err, res) => {
   if (err) throw err;
-  console.log("Table created with result: ", res);
+  console.log("Tables created with result: ", res);
 });
 
 const runDbBuild = cb => dbConnection.query(sql, cb);
