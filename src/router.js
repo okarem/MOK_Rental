@@ -2,11 +2,15 @@ const http = require("http");
 const fs = require("fs");
 const pg = require("pg");
 const getData = require("./queries/getData.js");
+const getQueryData = require("./queries/getQueryData.js");
 const queryString = require("querystring");
 const postData = require("./queries/postData.js");
+const handlers = require('./handlers.js')
+const url = require('url');
 
 const router = (request, response) => {
-  const endpoint = request.url.split("/")[1];
+  // const endpoint = request.url.split("/")[1];
+  const endpoint = url.parse(request.url).pathname;
   console.log(endpoint);
   if (endpoint === "") {
     fs.readFile(__dirname + "/../public/index.html", function(error, file) {
@@ -37,6 +41,12 @@ const router = (request, response) => {
         response.end(output);
       }
     });
+  } else if (endpoint === "/getQueryData") {
+    
+    handlers.getQueryDataHandler(request, response);
+
+
+    
   } else if (endpoint === "create-car_request") {
     let data = "";
     request.on("data", function(chunk) {
