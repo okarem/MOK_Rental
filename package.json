@@ -1,0 +1,30 @@
+{
+  "name": "MOK_Rental",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FACN7/MOK_Rental.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FACN7/MOK_Rental/issues"
+  },
+  "homepage": "https://github.com/FACN7/MOK_Rental#readme",
+  "devDependencies": {
+    "env2": "^2.2.2",
+    "pg": "^7.12.1",
+    "request": "^2.88.0",
+    "tap-spec": "^5.0.0",
+    "tape": "^4.11.0"
+  }
+}
