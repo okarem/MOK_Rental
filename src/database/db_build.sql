@@ -36,15 +36,17 @@ IF NOT EXISTS rentals
 (
   rental_id INTEGER NOT NULL,
   car_id INTEGER,
+  user_id INTEGER,
   date_begin DATE NOT NULL DEFAULT CURRENT_DATE,
   date_return DATE NOT NULL,
   PRIMARY KEY
-(rental_id,car_id),
+(rental_id,car_id,user_id),
   FOREIGN KEY
 (car_id) REFERENCES cars
-(car_id)
-
- 
+(car_id),
+  FOREIGN KEY
+(user_id) REFERENCES users
+(user_id)
 );
 
 COMMIT;
