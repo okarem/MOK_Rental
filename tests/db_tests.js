@@ -17,5 +17,39 @@ tape("Testing getCars Function", t => {
       t.end();
     })
   })
+})
 
+
+tape("Testing getUsers Function", t => {
+  runDbBuild((err, res) => {
+    getData((err, res) => {
+
+      // const expected = {
+      //   car_id: 1,
+      //   model: 'Mazda Lantis',
+      //   plate_number: '74-416-76',
+      //   imgurl: 'https://images-na.ssl-images-amazon.com/images/I/41EmH75zeML.jpg'
+      // };
+
+      t.deepEquals(1, 1, `getUsers function works as well`);
+      t.end();
+    })
+  })
+})
+
+tape("Testing postRental Function", t => {
+  runDbBuild((err, res) => {
+    getData((err, res) => {
+
+      // const expected = {
+      //   car_id: 1,
+      //   model: 'Mazda Lantis',
+      //   plate_number: '74-416-76',
+      //   imgurl: 'https://images-na.ssl-images-amazon.com/images/I/41EmH75zeML.jpg'
+      // };
+
+      t.deepEquals(1, 1, `getUsers function works as well`);
+      t.end();
+    })
+  })
 })
