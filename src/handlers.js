@@ -6,7 +6,8 @@ const qsModule = require('querystring');
 
 
 const getQueryDataHandler = (req,response)=>{
-    const qs= url.parse(req.url, true).query.qs;
+    // const qs= url.parse(req.url, true).query.qs;
+    const qs= req.headers.qs;
     getQueryData(qs,(err,data)=>{
         
 
@@ -27,6 +28,8 @@ const getQueryDataHandler = (req,response)=>{
 
         }
     });
+
+    console.log("query string from headers is : "+qs);
 
 }
 
