@@ -21,7 +21,7 @@ function deletError() {
 
 document.getElementById("Pickup").addEventListener("change", function(event) {
   pickupDate = new Date(event.target.value).toISOString().split("T")[0];
-  //   console.log(new Date(event.target.value));
+  console.log(pickupDate);
   checkDates();
 });
 
@@ -41,12 +41,10 @@ document
     checkDates();
   });
 
-// function checkDates() {}
-
 function filterResult() {
+  let qs = `SELECT * FROM cars where car_id NOT IN (SELECT cars.car_id from cars JOIN rentals ON cars.car_id=rentals.car_id WHERE (rentals.date_begin<='${pickupDate}' AND rentals.date_return>='${pickupDate}') OR (rentals.date_begin<='${returnDate}' AND rentals.date_return>='${returnDate}') OR (rentals.date_begin>='${pickupDate}' AND rentals.date_return <= '${returnDate}'));`;
+  request(qs, updateDom);
+  sessionStorage.clear();
   sessionStorage.setItem("pickupDate", pickupDate);
-  sessionStorage.setItem("ReturnDate", returnDate);
-
-  console.log("foo");
+  sessionStorage.setItem("returnDate", returnDate);
 }
-// addError("return date less than pickup date")
