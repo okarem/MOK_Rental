@@ -12,7 +12,7 @@ const router = (request, response) => {
   // const endpoint = request.url.split("/")[1];
   const endpoint = url.parse(request.url).pathname;
   console.log(endpoint);
-  if (endpoint === "") {
+  if (endpoint === "/") {
     fs.readFile(__dirname + "/../public/index.html", function(error, file) {
       if (error) {
         response.writeHead(500, "Content-Type:text/html");
@@ -27,7 +27,7 @@ const router = (request, response) => {
         response.end(file);
       }
     });
-  } else if (endpoint === "users") {
+  } else if (endpoint === "/users") {
     getData((err, res) => {
       if (err) {
         response.writeHead(500, "Content-Type:text/html");
@@ -47,7 +47,7 @@ const router = (request, response) => {
 
 
     
-  } else if (endpoint === "create-car_request") {
+  } else if (endpoint === "/create-car_request") {
     let data = "";
     request.on("data", function(chunk) {
       data += chunk;
