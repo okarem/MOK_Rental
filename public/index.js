@@ -44,9 +44,11 @@ document
 // function checkDates() {}
 
 function filterResult() {
-  sessionStorage.setItem("pickupDate", pickupDate);
-  sessionStorage.setItem("ReturnDate", returnDate);
+  // sessionStorage.setItem("pickupDate", pickupDate);
+  // sessionStorage.setItem("ReturnDate", returnDate);
 
-  console.log("foo");
+let qs=`SELECT * FROM cars where car_id NOT IN (SELECT cars.car_id from cars JOIN rentals ON cars.car_id=rentals.car_id WHERE (rentals.date_begin<='${pickupDate}' AND rentals.date_return>='${pickupDate}') OR (rentals.date_begin<='${returnDate}' AND rentals.date_return>='${returnDate}') OR (rentals.date_begin>='${pickupDate}' AND rentals.date_return <= '${returnDate}'));`;
+  request(qs, updateDom);
+
 }
 // addError("return date less than pickup date")

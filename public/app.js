@@ -63,6 +63,11 @@ console.log('created options');
       var cars = data;
       console.log(cars);
       var table = document.getElementById('cars-view');
+      
+      while (table.firstChild) {
+        table.removeChild(table.firstChild);
+      }
+
       cars.forEach((car)=> {
           console.log(car);
         var link = document.createElement('a');
@@ -72,16 +77,18 @@ console.log('created options');
         var name = document.createElement('div');
         name.classList.add("car-model");
         name.innerHTML = car.model;
-        row.appendChild(name);
+        
         var imgdiv = document.createElement('div');
         imgdiv.classList.add("img-container");
         
         var image = document.createElement('img');
         image.src = car.imgurl;
         image.classList.add("car-img");
+
         imgdiv.appendChild(image);
         row.appendChild(imgdiv);
         link.appendChild(row);
+        row.appendChild(name);
         table.appendChild(link);
       });
     }
@@ -91,4 +98,4 @@ console.log('created options');
 
 
 
-  request('select * from cars;', updateDom);
+  // request('select * from cars;', updateDom);
