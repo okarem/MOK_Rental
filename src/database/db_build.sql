@@ -15,7 +15,7 @@ BEGIN;
 INSERT INTO users
   (first_name,last_name,city,phone)
 VALUES
-  ('Omri', 'Zaher', 'Osfia', '0526086317');
+  ('Omri', 'Zaher', 'Osfia', '0526086317'),('Karem','Omary','Sandala','0544791675');
 
 CREATE TABLE
 IF NOT EXISTS cars
@@ -34,7 +34,7 @@ VALUES
 CREATE TABLE
 IF NOT EXISTS rentals
 (
-  rental_id INTEGER NOT NULL,
+  rental_id SERIAL NOT NULL,
   car_id INTEGER,
   user_id INTEGER,
   date_begin DATE NOT NULL DEFAULT CURRENT_DATE,
@@ -48,5 +48,7 @@ IF NOT EXISTS rentals
 (user_id) REFERENCES users
 (user_id)
 );
+
+INSERT INTO rentals (rental_id,car_id,user_id,date_begin,date_return) VALUES (1,1,1,'2019-11-14','2019-11-17');
 
 COMMIT;
