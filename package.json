@@ -8,6 +8,9 @@
   },
   "scripts": {
     "DBtest": "node tests/db_tests.js | tap-spec",
+    "QUERIEStest": "node tests/queries_tests.js | tap-spec",
+    "ROUTEStest": "node tests/routes_tests.js | tap-spec",
+    "server": "node src/server.js"
     "ROUTEStest": "node tests/routes_tests.js | tap-spec"
   },
   "repository": {
