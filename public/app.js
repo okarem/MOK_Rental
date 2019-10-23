@@ -38,20 +38,32 @@ function updateDom(err, data) {
     var cars = data;
     console.log(cars);
     var table = document.getElementById("cars-view");
+
+    while (table.firstChild) {
+      table.removeChild(table.firstChild);
+    }
+
     cars.forEach(car => {
       console.log(car);
       var link = document.createElement("a");
       link.href = "/rentCar?car_id=" + car.car_id;
-      sessionStorage.setItem("carid", car.car_id);
-
       var row = document.createElement("div");
+      row.classList.add("car-container");
       var name = document.createElement("div");
-      name.innerHTML = car.name;
-      row.appendChild(name);
+      name.classList.add("car-model");
+      name.innerHTML = car.model;
+
+      var imgdiv = document.createElement("div");
+      imgdiv.classList.add("img-container");
+
       var image = document.createElement("img");
       image.src = car.imgurl;
-      row.appendChild(image);
+      image.classList.add("car-img");
+
+      imgdiv.appendChild(image);
+      row.appendChild(imgdiv);
       link.appendChild(row);
+      row.appendChild(name);
       table.appendChild(link);
     });
   }
