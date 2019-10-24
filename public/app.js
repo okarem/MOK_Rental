@@ -36,9 +36,13 @@ function updateDom(err, data) {
     console.log("+++++++++++++");
 
     if (data.length == 0) {
-      document.getElementById("alert1").hidden = "";
       document.getElementById("alert1_content").innerHTML =
-        "<strong>Danger!</strong> no cars available in those dates ";
+        "<strong>ooooooo! :( </strong> no cars available in those dates ";
+      document.getElementById("alert1").hidden = "";
+
+      setTimeout(function() {
+        document.getElementById("alert1").hidden = "hidden";
+      }, 3000);
     } else {
       document.getElementById("alert1").hidden = "hidden";
     }

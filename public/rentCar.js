@@ -44,21 +44,31 @@ function checkout() {
     }, 2000);
   } else {
     const update_user = `INSERT INTO users (first_name,last_name, city,phone) VALUES ('${fname}', '${lname}','${city}','${phone}');`;
-    request(update_user, (err, res) => {});
-    request(
-      `select user_id from users where first_name='${fname}' AND last_name='${lname}' AND city='${city}' AND phone='${phone}' LIMIT 1;`,
-      (err, data) => {
-        var userid = data[0].user_id;
-        var pickupDate = sessionStorage.getItem("pickupDate");
-        var returnDate = sessionStorage.getItem("returnDate");
-        var update_rental = `INSERT INTO rentals (car_id,user_id, date_begin,date_return) VALUES ('${carid}', '${userid}','${pickupDate}','${returnDate}')`;
 
-        request(update_rental, (err, res) => {
-          sessionStorage.setItem("success", "success");
+    const check_user_exsist = `SELECT * FROM users WHERE first_name='${fname}'AND last_name='${lname}' AND city='${city}' AND phone='${phone}';`;
 
-          window.location.href = "http://" + window.location.host;
-        });
+    request(check_user_exsist, (err, user) => {
+      if (user.length != 0) {
+        window.location.href = "http://" + window.location.host;
+      } else {
+        request(update_user, (err, res) => {});
+
+        request(
+          `select user_id from users where first_name='${fname}' AND last_name='${lname}' AND city='${city}' AND phone='${phone}' LIMIT 1;`,
+          (err, data) => {
+            var userid = data[0].user_id;
+            var pickupDate = sessionStorage.getItem("pickupDate");
+            var returnDate = sessionStorage.getItem("returnDate");
+            var update_rental = `INSERT INTO rentals (car_id,user_id, date_begin,date_return) VALUES ('${carid}', '${userid}','${pickupDate}','${returnDate}')`;
+
+            request(update_rental, (err, res) => {
+              sessionStorage.setItem("success", "success");
+
+              window.location.href = "http://" + window.location.host;
+            });
+          }
+        );
       }
-    );
+    });
   }
 }

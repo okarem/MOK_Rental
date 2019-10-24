@@ -6,10 +6,10 @@ BEGIN;
   IF NOT EXISTS users
   (
   user_id SERIAL PRIMARY KEY,
-  first_name TEXT NOT NULL,
-  last_name TEXT NOT NULL,
-  city TEXT NOT NULL,
-  phone TEXT NOT NULL
+  first_name VARCHAR(10) NOT NULL,
+  last_name VARCHAR(10) NOT NULL,
+  city VARCHAR(10) NOT NULL,
+  phone varchar(22) NOT NULL
 );
 
 INSERT INTO users
@@ -21,8 +21,8 @@ CREATE TABLE
 IF NOT EXISTS cars
 (
   car_id SERIAL PRIMARY KEY,
-  model TEXT NOT NULL,
-  plate_number TEXT NOT NULL,
+  model VARCHAR(10) NOT NULL,
+  plate_number VARCHAR(10) NOT NULL,
   imgUrl TEXT 
 );
 
