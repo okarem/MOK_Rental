@@ -33,10 +33,17 @@ function updateDom(err, data) {
   if (err) {
     console.log(err);
   } else {
-    console.log(data);
-    console.log(typeof data);
+    console.log("+++++++++++++");
+
+    if (data.length == 0) {
+      document.getElementById("alert1").hidden = "";
+      document.getElementById("alert1_content").innerHTML =
+        "<strong>Danger!</strong> no cars available in those dates ";
+    } else {
+      document.getElementById("alert1").hidden = "hidden";
+    }
+
     var cars = data;
-    console.log(cars);
     var table = document.getElementById("cars-view");
 
     while (table.firstChild) {
@@ -44,7 +51,6 @@ function updateDom(err, data) {
     }
 
     cars.forEach(car => {
-      console.log(car);
       var link = document.createElement("a");
       link.href = "/rentCar?car_id=" + car.car_id;
       var row = document.createElement("div");

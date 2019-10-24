@@ -1,6 +1,7 @@
 var pickupDate, returnDate, todaydate;
 
 (function init() {
+  showErrorLabel();
   todaydate = new Date().toISOString().split("T")[0];
   document.getElementById("Pickup").value = todaydate;
   document.getElementById("ReturnDate").value = todaydate;
@@ -47,4 +48,17 @@ function filterResult() {
   sessionStorage.clear();
   sessionStorage.setItem("pickupDate", pickupDate);
   sessionStorage.setItem("returnDate", returnDate);
+}
+
+function showErrorLabel() {
+  if (sessionStorage.getItem("success")) {
+    document.getElementById("alert2").hidden = "";
+    document.getElementById("alert2_content").innerHTML =
+      "<strong>YES!</strong> Rent Car Success !! ";
+
+    setTimeout(function() {
+      document.getElementById("alert2").hidden = "hidden";
+      sessionStorage.removeItem("success");
+    }, 3000);
+  }
 }
