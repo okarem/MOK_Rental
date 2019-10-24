@@ -1,7 +1,7 @@
 
 # MOK_Rental - DB project
 
-![Hello](https://media.giphy.com/media/IgKziLLX1SDeFXAZba/giphy.gif)
+![image alt](https://i.giphy.com/media/IgKziLLX1SDeFXAZba/giphy.webp)
 
 [Heroku](https://mok-car-rentals.herokuapp.com/)
 
@@ -21,6 +21,10 @@ Run the test command
 ```console
 > npm test
 ```
+
+# user Story 
+The main purpose of the user is to rent a car in the chosen date range so after choosing the dates we show him the avilable
+cars and give him opurtunity to choose the car he preffer ,so after clicking the car he want to rent we take him to the reservation page to add his details and confirm the requset .
 
 *note: to use the app you need to make a database and initialize it
 go to `config.env` and change it to your credentials
