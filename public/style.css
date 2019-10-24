@@ -1,24 +1,24 @@
 body {
   background-attachment: fixed;
   background-size: cover;
-  background-color: #464646;
+  /* background-color: #464646; */
+background-image:url(https://www.rss-insurance.com/wp-content/uploads/2015/02/parking_lot_pic_of_cars.jpg) ;
 }
 
 .jambo {
   margin: auto;
-  margin-top: 130px;
+  /* margin-top: 130px; */
 }
 
 .jamoHeader {
   text-align: center;
-  color: #fff;
+  color:black;
   font-size: 1.7em;
 }
 
 .form {
-  /* background-image: url(image.jpeg);
-  background-position: center center; */
-  color: #fff;
+  
+  color:black;
   margin: auto;
   width: 50%;
   /* border: solid black; */
@@ -39,17 +39,69 @@ input {
   margin: auto;
   margin-top: 20px;
   width: 20%;
+  opacity: 1;
 }
 
 .search {
-  background-color: #4caf50; /* Green */
+  background-color: black; /* Green */
   border: none;
   color: white;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 20px;
   /* height: 70px; */
   margin: 4px 2px;
   cursor: pointer;
+  opacity: 1;
+}
+
+#cars-view {
+   margin: auto;
+   max-width: 800px;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   padding: 10px 0 10px 0;
+  }
+
+.car-container{
+  
+  /* border-style: solid; */
+  /* border-color:darkorange; */
+  /* width: 100px; */
+  padding: 1rem;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+  color: black;
+}
+
+.car-img{
+  border-radius: 1% ;
+  width: 200px;
+  height: 200px;
+}
+
+.car-model{
+  text-align: center;
+  margin: 1rem;
+}
+
+.main-div{  
+display: table;
+margin: auto;
+margin-top:12rem ;
+text-align: center;
+background:white;
+width: 850px;
+padding: auto;
+border-radius: 1%;
+opacity: 0.9;
+padding: 1rem;
+
+}
+
+.car-model{
+  text-decoration: none;
 }
