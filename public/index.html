@@ -5,57 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="alert.css" media="screen" />
 
     <title>MOK</title>
   </head>
   <body>
-
-    <div class="main-div">
-    <section class="jambo">
-      <div class="jamoHeader">
-        <h1>Find your ride</h1>
-      </div>
-    </section>
-
-    <section class="form">
-      <table id="form-table">
-        <tr>
-          <th>
-            <label for="From">Pickup Date: </label>
-          </th>
-          <th>
-            <input type="date" name="bday" id="Pickup" />
-          </th>
-        </tr>
-
-        <tr>
-          <th>
-            <label for="To">Return Date: </label>
-          </th>
-          <th>
-            <input type="date" name="bday" id="ReturnDate" />
-          </th>
-        </tr>
-      </table>
-    </section>
-
-    <div class="search-button">
-      <span id="error_span" style="color: red" hidden="hidden"
-        ><h3>Error</h3></span
+    <div class="alert1" id="alert1" hidden="hidden">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';"
+        >&times;</span
       >
-
-      <input
-        type="submit"
-        class="search"
-        id="btu"
-        value="search"
-        onclick="filterResult()"
-      />
+      <p id="alert1_content"></p>
     </div>
 
-    <div id="cars-view"></div>
+    <div class="alert2" id="alert2" hidden="hidden">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';"
+        >&times;</span
+      >
+      <p id="alert2_content"></p>
+    </div>
 
-  </div>
+    <div class="main-div">
+      <section class="jambo">
+        <div class="jamoHeader">
+          <h1>Find your ride</h1>
+        </div>
+      </section>
+
+      <section class="form">
+        <table id="form-table">
+          <tr>
+            <th>
+              <label for="From">Pickup Date: </label>
+            </th>
+            <th>
+              <input type="date" name="bday" id="Pickup" />
+            </th>
+          </tr>
+
+          <tr>
+            <th>
+              <label for="To">Return Date: </label>
+            </th>
+            <th>
+              <input type="date" name="bday" id="ReturnDate" />
+            </th>
+          </tr>
+        </table>
+      </section>
+
+      <div class="search-button">
+        <span id="error_span" style="color: red" hidden="hidden"
+          ><h3>Error</h3></span
+        >
+
+        <input
+          type="submit"
+          class="search"
+          id="btu"
+          value="search"
+          onclick="filterResult()"
+        />
+      </div>
+
+      <div id="cars-view"></div>
+    </div>
     <script src="index.js"></script>
 
     <script src="app.js"></script>

@@ -35,19 +35,30 @@ function checkout() {
   var phone = document.getElementById("phone").value;
   var city = document.getElementById("city").value;
 
-  const update_user = `INSERT INTO users (first_name,last_name, city,phone) VALUES ('${fname}', '${lname}','${city}','${phone}');`;
-  request(update_user, (err, res) => {});
-  request(
-    `select user_id from users where first_name='${fname}' AND last_name='${lname}' AND city='${city}' AND phone='${phone}' LIMIT 1;`,
-    (err, data) => {
-      var userid = data[0].user_id;
-      var pickupDate = sessionStorage.getItem("pickupDate");
-      var returnDate = sessionStorage.getItem("returnDate");
-      var update_rental = `INSERT INTO rentals (car_id,user_id, date_begin,date_return) VALUES ('${carid}', '${userid}','${pickupDate}','${returnDate}')`;
+  if (fname == "" || lname == "" || phone == "" || city == "") {
+    document.getElementById("alert1").hidden = "";
+    document.getElementById("alert1_content").innerHTML =
+      "<strong>Danger!</strong> Please fill all the fields ";
+    setTimeout(function() {
+      document.getElementById("alert1").hidden = "hidden";
+    }, 2000);
+  } else {
+    const update_user = `INSERT INTO users (first_name,last_name, city,phone) VALUES ('${fname}', '${lname}','${city}','${phone}');`;
+    request(update_user, (err, res) => {});
+    request(
+      `select user_id from users where first_name='${fname}' AND last_name='${lname}' AND city='${city}' AND phone='${phone}' LIMIT 1;`,
+      (err, data) => {
+        var userid = data[0].user_id;
+        var pickupDate = sessionStorage.getItem("pickupDate");
+        var returnDate = sessionStorage.getItem("returnDate");
+        var update_rental = `INSERT INTO rentals (car_id,user_id, date_begin,date_return) VALUES ('${carid}', '${userid}','${pickupDate}','${returnDate}')`;
 
-      request(update_rental, (err, res) => {
-        window.location.href = "http://" + window.location.host;
-      });
-    }
-  );
+        request(update_rental, (err, res) => {
+          sessionStorage.setItem("success", "success");
+
+          window.location.href = "http://" + window.location.host;
+        });
+      }
+    );
+  }
 }
